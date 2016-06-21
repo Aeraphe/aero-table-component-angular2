@@ -1,20 +1,21 @@
 export interface IAeroTableDataColumn {
 
         id: number;
-        class: string;
+        cssClass: string;
         name: string;
         sort: boolean;
+        filter?:boolean;
 
 
 }
 
 export interface IAeroTableDataRow {
 
-        tr: { id: number };
-        td: [{
-                tdId: number,
-                tdContent?: any,
-                tdClass?: string,
+        row: { id: number };
+        cell: [{
+                id?: number,
+                value?: any,
+                cssClass?: string,
                 component?: string, //Not Required 
                 componentState?: boolean //Not Required 
         }];
@@ -26,11 +27,11 @@ export interface IAeroTableDataRow {
 export interface IAeroRow {
 
 
-        tdId: number;
-        tdContent?: any;
-        tdClass?: string;
-        component?: string; //Not Required 
-        componentState?: boolean; //Not Required 
+        id: number;
+        value?: any,
+        cssClass?: string,
+        component?: string, //Not Required 
+        componentState?: boolean //Not Required 
 
 }
 

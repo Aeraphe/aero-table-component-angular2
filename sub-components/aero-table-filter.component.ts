@@ -153,18 +153,18 @@ export /**
             //Map the filtred data to new object
             this.dataForFilter.map((item: any) => {
                 let newObject: Array<IAeroTableDataRow>;
-                let data: any = item.td;
+                let data: any = item.cell;
                 //Creat a Array for store the coluns
                 var columnsId: Array<number> = [];
                 //Macth the string column by column
                 for (let column of this.filterOptions) {
 
-                    if (column.filter && data[column.id - 1].tdContent != null && data[column.id - 1].tdContent != undefined && typeof data[column.id - 1].tdContent === "string") {
+                    if (column.filter && data[column.id - 1].value != null && data[column.id - 1].value != undefined && typeof data[column.id - 1].value === "string") {
                         //Set a regex for macth the string
                         let re = new RegExp(this.filterInput, 'gi');
-                        if (data[column.id - 1].tdContent.match(re)) {
+                        if (data[column.id - 1].value.match(re)) {
                             //Create the new object whith the filtred data
-                            filterResult.push({ tr: item.tr, td: item.td });
+                            filterResult.push({ row: item.row, cell: item.cell });
 
                         }
 
@@ -199,14 +199,14 @@ export /**
         var row: Array<number> = [];
         var records: number = 0;
         filtredData.forEach((item: any) => {
-            let data: any = item.tr;
+            let data: any = item.row;
 
             //Get the firs record
             if (row.length == 0) {
                 //Save the row id fro compare
                 row.push(data.id);
                 //Put the first record in the new array
-                filterDataPrepared.push({ tr: item.tr, td: item.td });
+                filterDataPrepared.push({ row: item.row, cell: item.cell });
                 //Calculate the records per page for show all records ate once in Aero table
                 records++;
 
@@ -227,7 +227,7 @@ export /**
                 if (uniq === 0) {
 
                     row.push(data.id);
-                    filterDataPrepared.push({ tr: item.tr, td: item.td });
+                    filterDataPrepared.push({ row: item.row, cell: item.cell });
                     records++;
                 }
 

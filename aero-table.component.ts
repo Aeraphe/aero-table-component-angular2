@@ -22,7 +22,7 @@ import {AeroPagination} from './sub-components/aero-table-pagination.component';
             <th *ngIf="AeroTableOptions.showItem">
              Item
             </th>
-            <th   *ngFor="let thItem of aeroColumns"  id="th-{{thItem.id}}" class="{{thItem.class}}">
+            <th   *ngFor="let thItem of aeroColumns"  id="th-{{thItem.id}}" class="{{thItem.cssClass}}">
              {{thItem.name}}
              <span ></span>
             </th>     
@@ -34,10 +34,10 @@ import {AeroPagination} from './sub-components/aero-table-pagination.component';
             <td *ngIf="AeroTableOptions.showItem" >
                {{i2+1}}
             </td>
-             <td  *ngFor="let item of group.td;let i=index"   id="{{item.tdId}}" class="{{item.tdClass}}">
+             <td  *ngFor="let item of group.cell;let i=index"   id="{{item.id}}" class="{{item.cssClass}}">
               <speed-td-content >
-               <span (click)="getDataTd({column:i,row:group.tr.id,cell:item.tdId,cellValue:item.tdContent})"  *ngIf="!item.component">{{item.tdContent}}</span>
-               <speed-onoff-switch (clickEvent)="getDataTd($event)"  [data]="{column:i,row:group.tr.id,cell:item.tdId,state:item.componentState}" *ngIf="item.component=='onoff'" ></speed-onoff-switch >
+               <span (click)="getDataTd({column:i,row:group.row.id,cell:item.id,cellValue:item.value})"  *ngIf="!item.component">{{item.value}}</span>
+               <speed-onoff-switch (clickEvent)="getDataTd($event)"  [data]="{column:i,row:group.row.id,cell:item.id,state:item.componentState}" *ngIf="item.component=='onoff'" ></speed-onoff-switch >
               </speed-td-content>
              </td>
        </tr>
