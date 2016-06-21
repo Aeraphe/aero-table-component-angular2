@@ -1,18 +1,24 @@
 # aero-table-component-angular2
-A Table grid component for angular 2 with subcomponent: Aero Pagination, Aero OnOff Swittch, Aero Filter . 
-All css is Bootstrap
+A Table grid component for angular 2 with subcomponent: 
+ 
+ Aero Pagination, 
+ Aero OnOff Swittch, 
+ Aero Filter . 
+
+All css is from Bootstrap
 
 This is a Table Grid for Angular 2.
 
 The Table grid can use or not the above subcomponents:
 
-  Aero Pagination
-  Aero OnOff Swittch
-  Aero Filter
+Aero Pagination
+Aero OnOff Swittch
+Aero Filter
 
 All the css is from Bootstrap.
 
-How to use:
+0 - How to use:
+
 /*
 *First import the Files Above
 */
@@ -57,8 +63,8 @@ this.columns=[
         class:" ", //css class
         name:"Nome",
         sort:true
-
-    },
+        
+        }
   
   ]
 
