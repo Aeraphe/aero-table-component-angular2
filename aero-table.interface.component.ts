@@ -17,7 +17,8 @@ export interface IAeroTableDataRow {
                 value?: any,
                 cssClass?: string,
                 component?: string, //Not Required 
-                componentState?: boolean //Not Required 
+                componentState?: boolean, //Not Required 
+                componentOptions?:any;
         }];
 
 

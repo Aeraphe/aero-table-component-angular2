@@ -14,6 +14,8 @@ The Table grid can use or not the above subcomponents:
 Aero Pagination
 Aero OnOff Swittch
 Aero Filter
+Aero Button (New 21/6/2016)
+
 
 All the css is from Bootstrap.
 
@@ -60,7 +62,7 @@ ngOnInit(){
 this.columns=[
         {
         id:1, //column id
-        class:" ", //css class
+        cssClass:" ", //css class
         name:"Nome",
         sort:true
         
@@ -75,14 +77,16 @@ this.columns=[
 
 export interface IAeroTableDataRow {
 
-        tr: { id: number };
-        td: [{
-                tdId: number,
-                tdContent?: any,
-                tdClass?: string,
+        row: { id: number };
+        cell: [{
+                id?: number,
+                value?: any,
+                cssClass?: string,
                 component?: string, //Not Required 
                 componentState?: boolean //Not Required 
         }];
+
+
 
 }
 
@@ -90,3 +94,13 @@ export interface IAeroTableDataRow {
 
 
 
+Aero Button Component
+
+This component can be use in Aero Table.
+The Aero Button use ngSwitch to select glyphicon icon
+
+On Cell Array of Objecs just define the below properties:
+
+{id:1,value:'',cssClass:'',component:"aero-button",componentOptions:'edit'}
+
+The componentOptions: Define the type of the button

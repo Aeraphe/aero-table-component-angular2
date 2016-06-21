@@ -2,6 +2,7 @@ import {Component, OnInit, Input, EventEmitter, ViewChild, QueryList, AfterViewI
 import {IAeroTableDataColumn, IAeroTableDataRow, IAeroRow} from './aero-table.interface.component';
 import {Observable} from 'rxjs/Observable';
 import {OnOffSwitchComponent} from './sub-components/onoff-switch.component';
+import {AeroButtonComponent} from './sub-components/aero-button.component';
 import {AeroTableFilterComponent} from './sub-components/aero-table-filter.component';
 import {AeroPagination} from './sub-components/aero-table-pagination.component';
 
@@ -29,15 +30,16 @@ import {AeroPagination} from './sub-components/aero-table-pagination.component';
         </tr>
     </thead>
     <tbody>
-    <template  ngFor let-group="$implicit"  [ngForOf]="rows" let-i2="index" >
+    <template  ngFor let-row="$implicit"  [ngForOf]="rows" let-i2="index" >
         <tr  style="font-size: 11px; ">
             <td *ngIf="AeroTableOptions.showItem" >
                {{i2+1}}
             </td>
-             <td  *ngFor="let item of group.cell;let i=index"   id="{{item.id}}" class="{{item.cssClass}}">
+             <td  *ngFor="let cell of row.cell;let i=index"   id="{{cell.id}}" class="{{cell.cssClass}}">
               <speed-td-content >
-               <span (click)="getDataTd({column:i,row:group.row.id,cell:item.id,cellValue:item.value})"  *ngIf="!item.component">{{item.value}}</span>
-               <speed-onoff-switch (clickEvent)="getDataTd($event)"  [data]="{column:i,row:group.row.id,cell:item.id,state:item.componentState}" *ngIf="item.component=='onoff'" ></speed-onoff-switch >
+               <span (click)="getDataTd({column:i,row:row.row.id,cell:cell.id,cellValue:cell.value})"  *ngIf="!cell.component">{{cell.value}}</span>
+               <speed-onoff-switch (clickEvent)="getDataTd($event)"  [data]="{column:i,row:row.row.id,cell:cell.id,state:cell.componentState}" *ngIf="cell.component=='onoff'" ></speed-onoff-switch >
+                 <aero-button (clickEvent)="getDataTd($event)"  [data]="{buttonType:cell.componentOptions,column:i,row:row.row.id,cell:cell.id}" *ngIf="cell.component=='aero-button'" ></aero-button >
               </speed-td-content>
              </td>
        </tr>
@@ -59,7 +61,7 @@ import {AeroPagination} from './sub-components/aero-table-pagination.component';
  </div>
 </div>
 `,
-    directives: [OnOffSwitchComponent, AeroPagination, AeroTableFilterComponent]
+    directives: [OnOffSwitchComponent, AeroPagination, AeroTableFilterComponent,AeroButtonComponent]
 })
 
 export class AeroTableComponent implements OnInit, AfterViewInit, OnChanges {
