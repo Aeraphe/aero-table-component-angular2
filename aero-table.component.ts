@@ -10,7 +10,7 @@ import {AeroPagination} from './sub-components/aero-table-pagination.component';
     selector: 'aero-table',
     template: `    
 
-<aero-table-filter *ngIf="AeroTableOptions.showFilters" (filterEvent)="getFiltredData($event)" [filterColumnOptions]="aeroColumns" [pageRecords]="recordsPerPage" [dataForFilter]="dataForFilterCompoent">
+<aero-table-filter *ngIf="AeroTableOptions.showFilters" (filterEvent)="getFiltredData($event)" [columnsForFilter]="aeroColumns" [pageRecords]="recordsPerPage" [dataForFilter]="dataForFilterCompoent">
 </aero-table-filter>
 
 <div *ngIf="!showAeroTable"><div class="alert alert-info" role="alert">{{showSearchRecordMessage}}</div></div>

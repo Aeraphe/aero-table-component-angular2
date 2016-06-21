@@ -87,22 +87,22 @@ export /**
     ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
         this.loadData();
     }
-    
-    loadData(loadTime:any=null) {
-        var self=this;
-        var time=loadTime==true && loadTime!=null ? 1000:0;
-setTimeout(function() {
-        if (self.aeroRowsPagination.length > 0 && self.numberOfRecordsPage > 0) {
 
-            self._next = 0;
-            self._back = 0;
-            self.activePage = 0;
-            self.totalPages = self.getTotalPages();
-            self.paginationDataEvent.emit(self.totalPages);
-            self.goToNextRecords('next');
-        }
+    loadData(loadTime: any = null) {
+        var self = this;
+        var time = loadTime == true && loadTime != null ? 1000 : 0;
+        setTimeout(function () {
+            if (self.aeroRowsPagination.length > 0 && self.numberOfRecordsPage > 0) {
 
-},time);   
+                self._next = 0;
+                self._back = 0;
+                self.activePage = 0;
+                self.totalPages = self.getTotalPages();
+                self.paginationDataEvent.emit(self.totalPages);
+                self.goToNextRecords('next');
+            }
+
+        }, time);
     }
 
 
@@ -116,13 +116,14 @@ setTimeout(function() {
 
     //Calculate and return the records
     getRecords(direction: string): any {
-        let n: number = 0;
+  
         var result: Array<any> = [];
         let index: number;
         index = this._setRecordsDirectionQuery(direction);
         this.showProgressBar = true;
         this.percentComplet = 0;
-        while (n < this.numberOfRecordsPage && this.numberOfRecordsPage > 0) {
+        let count: number = 0;
+        while (count < this.numberOfRecordsPage && this.numberOfRecordsPage > 0) {
             if (this.aeroRowsPagination[index]) {
 
                 this.percentComplet += (1 / this.numberOfRecordsPage) * 100;
@@ -130,7 +131,7 @@ setTimeout(function() {
                 index++;
 
             }
-            n++;
+            count++;
         };
 
         this.showHidProgressBar(Math.round(this.percentComplet));
@@ -168,7 +169,7 @@ setTimeout(function() {
             this.activePage--;
 
         } else if (direction === "page") {
-           
+
             index = this.goToPage();
         } else {
             index = this.goToFirsOrLastRecords(direction);
