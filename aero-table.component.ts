@@ -1,10 +1,11 @@
 import {Component, OnInit, Input, EventEmitter, ViewChild, QueryList, AfterViewInit, Output, OnChanges, SimpleChange} from 'angular2/core';
 import {IAeroTableDataColumn, IAeroTableDataRow, IAeroRow} from './aero-table.interface.component';
 import {Observable} from 'rxjs/Observable';
-import {OnOffSwitchComponent} from './sub-components/onoff-switch.component';
-import {AeroButtonComponent} from './sub-components/aero-button.component';
-import {AeroTableFilterComponent} from './sub-components/aero-table-filter.component';
-import {AeroPagination} from './sub-components/aero-table-pagination.component';
+import {OnOffSwitchComponent} from '../aero-onoff-switch/onoff-switch.component';
+import {AeroButtonComponent} from '../aero-button/aero-button.component';
+import {AeroTableFilterComponent} from '../aero-table-filter/aero-table-filter.component';
+import {AeroPagination} from '../aero-table-pagination/aero-table-pagination.component';
+
 
 @Component({
 
@@ -88,7 +89,7 @@ export class AeroTableComponent implements OnInit, AfterViewInit, OnChanges {
     public totalColumnsForColspan: number;
     public showAeroTable: boolean = true;
     public showSearchRecordMessage: string = 'Nenhum Registro Encontrado';
-    @Input() public AeroTableOptions: Object = { showItem: true, showFilters: true, showPagination: true };
+    @Input() public AeroTableOptions = { showItem: true, showFilters: true, showPagination: true };
 
 
 
